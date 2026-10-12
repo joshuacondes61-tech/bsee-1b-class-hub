@@ -1,144 +1,796 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#102b46">
+<meta name="theme-color" content="#087f5b">
 <title>BSEE 1B Class Hub</title>
+
 <style>
-:root{--navy:#102b46;--navy2:#183b5a;--teal:#36cbb0;--bg:#f3f6fa;--card:#fff;--text:#172536;--muted:#6b7a8c;--line:#e4eaf1;--yellow:#f8c75b;--red:#ef6b6b;--blue:#4b8de8;--shadow:0 10px 28px #102b4610}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{max-width:1240px;margin:auto;padding:18px}.hero{background:linear-gradient(125deg,var(--navy),#1b4968);color:#fff;border-radius:24px;padding:25px;position:relative;overflow:hidden;box-shadow:var(--shadow)}.hero:after{content:"";position:absolute;width:250px;height:250px;border:35px solid #ffffff0c;border-radius:50%;right:-75px;top:-105px}.brand{display:flex;align-items:center;gap:13px;position:relative;z-index:1}.logo{height:54px;width:54px;border-radius:17px;background:#ffffff18;display:grid;place-items:center;font-size:28px}.brand h1{font-size:clamp(20px,3vw,29px);margin:0;letter-spacing:.2px}.brand p{margin:4px 0 0;color:#c9d9e7;font-size:13px}.hero-bottom{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-top:27px;position:relative;z-index:1;flex-wrap:wrap}.hero-bottom h2{font-size:clamp(21px,4vw,32px);margin:0 0 6px}.hero-bottom p{margin:0;color:#d2e1ec;max-width:600px}.date-pill{padding:10px 13px;border:1px solid #ffffff2b;background:#ffffff10;border-radius:13px;font-size:13px;white-space:nowrap}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:17px 0}.stat{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:17px;box-shadow:var(--shadow)}.stat .icon{font-size:23px}.stat strong{display:block;font-size:25px;margin-top:7px}.stat span{font-size:13px;color:var(--muted)}.layout{display:grid;grid-template-columns:225px minmax(0,1fr);gap:17px}.sidebar,.panel{background:var(--card);border:1px solid var(--line);border-radius:19px;box-shadow:var(--shadow)}.sidebar{padding:12px;height:max-content;position:sticky;top:12px}.navbtn{width:100%;border:0;background:transparent;text-align:left;padding:12px 13px;border-radius:12px;color:#526274;display:flex;gap:10px;align-items:center;font-weight:650;margin:2px 0}.navbtn.active{background:#e7f8f5;color:#087d6b}.navbtn:hover{background:#f0f5f8}.side-note{border-top:1px solid var(--line);padding:14px 9px 5px;color:var(--muted);font-size:12px;line-height:1.5;margin-top:10px}.main{min-width:0}.section{display:none}.section.active{display:block}.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:3px 0 15px}.section-head h2{margin:0;font-size:23px}.section-head p{margin:5px 0 0;color:var(--muted);font-size:13px}.btn{border:0;border-radius:11px;padding:10px 14px;font-weight:700;background:var(--navy);color:#fff;display:inline-flex;align-items:center;gap:7px;justify-content:center}.btn:hover{filter:brightness(1.1)}.btn.teal{background:#0d9b84}.btn.light{background:#edf2f7;color:#263b50}.btn.danger{background:#fff0f0;color:#b73b3b}.btn.small{padding:7px 10px;font-size:12px}.panel{padding:18px;margin-bottom:15px}.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:15px}.field{width:100%;border:1px solid #dbe3ec;border-radius:11px;padding:11px 12px;background:#fff;color:var(--text);outline:none}.field:focus{border-color:#36bda6;box-shadow:0 0 0 3px #36cbb01a}.toolbar .field{flex:1;min-width:150px}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.material,.notice,.event,.task{border:1px solid var(--line);border-radius:15px;padding:15px;min-width:0;background:#fff}.material-top{display:flex;gap:11px;align-items:flex-start}.fileicon{height:43px;width:43px;flex-shrink:0;border-radius:12px;background:#eaf2ff;display:grid;place-items:center;font-size:21px}.material h3,.notice h3,.event h3,.task h3{font-size:15px;margin:0 0 6px;overflow-wrap:anywhere}.meta{color:var(--muted);font-size:12px;line-height:1.5}.desc{font-size:13px;line-height:1.5;margin:10px 0;color:#4f5f70;overflow-wrap:anywhere}.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}.tag{display:inline-flex;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:750;background:#eef3f8;color:#526274}.tag.important{background:#fff0d4;color:#8c5c00}.tag.urgent{background:#ffe7e7;color:#b63737}.tag.exam{background:#f0eaff;color:#7047ad}.notice{border-left:4px solid var(--blue)}.notice.pinned{border-left-color:var(--yellow);background:#fffdf7}.event{display:flex;gap:13px}.event-date{width:58px;flex-shrink:0;border-radius:12px;background:#e8f7f4;color:#087d6b;text-align:center;padding:9px 4px;height:max-content}.event-date b{font-size:22px;display:block;line-height:1.1}.event-date span{font-size:11px;font-weight:800;text-transform:uppercase}.event-content{flex:1;min-width:0}.event-content .actions{margin-top:8px}.task{display:flex;gap:11px;align-items:flex-start}.task input{width:18px;height:18px;margin-top:2px;accent-color:#0d9b84}.task.done{opacity:.58}.task.done h3{text-decoration:line-through}.empty{text-align:center;padding:35px 15px;color:var(--muted);grid-column:1/-1}.empty .big{font-size:35px;margin-bottom:8px}.empty h3{margin:0 0 6px;color:#405267}.empty p{font-size:13px;margin:0}.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}.quick{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff;text-align:left}.quick span{font-size:25px}.quick b{display:block;margin-top:8px}.quick small{color:var(--muted)}.schedule-list{display:grid;gap:11px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}.modal-backdrop{display:none;position:fixed;inset:0;background:#081827a8;z-index:20;padding:18px;overflow:auto;align-items:center;justify-content:center}.modal-backdrop.open{display:flex}.modal{background:#fff;border-radius:19px;padding:22px;width:min(600px,100%);max-height:94vh;overflow:auto;box-shadow:0 25px 80px #0003}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.modal-head h2{margin:0;font-size:21px}.close{border:0;background:#eef2f6;border-radius:10px;width:36px;height:36px;font-size:21px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.formrow{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}.formrow label{font-size:12px;font-weight:750;color:#526274}.formrow.full{grid-column:1/-1}.hint{background:#f2f7fb;border-radius:11px;padding:11px 12px;color:#596b7e;font-size:12px;line-height:1.5;margin:10px 0}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);background:#142f47;color:white;border-radius:12px;padding:12px 16px;opacity:0;pointer-events:none;transition:.2s;z-index:50;box-shadow:var(--shadow);max-width:90vw;font-size:13px}.toast.show{opacity:1;transform:translate(-50%,0)}.footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 0}.mobile-nav{display:none}.hidden{display:none!important}
-@media(max-width:800px){.app{padding:12px}.layout{grid-template-columns:1fr}.sidebar{position:static;display:flex;overflow-x:auto;gap:5px;padding:7px}.navbtn{width:auto;white-space:nowrap;margin:0;padding:10px}.side-note{display:none}.stats{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr}.quick-grid{grid-template-columns:1fr 1fr}.two-col{grid-template-columns:1fr}.hero{padding:20px}.hero-bottom{margin-top:22px}.stat{padding:13px}.stat strong{font-size:22px}}
-@media(max-width:440px){.formgrid{grid-template-columns:1fr}.formrow.full{grid-column:auto}.date-pill{white-space:normal}.quick-grid{grid-template-columns:1fr 1fr}.section-head h2{font-size:21px}.panel{padding:13px}}
+:root {
+  --green: #087f5b;
+  --green2: #10a878;
+  --pale: #e8f7f0;
+  --bg: #f4f8f6;
+  --text: #18352b;
+  --muted: #728078;
+  --border: #e1eae5;
+  --white: #fff;
+  --red: #d94343;
+  --shadow: 0 8px 25px rgba(20,70,45,.06);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+  outline: 3px solid #8cdec0;
+  outline-offset: 2px;
+}
+.topbar {
+  background: linear-gradient(120deg,#056747,#0da77a);
+  color: white;
+  padding: 27px 20px;
+}
+.top-inner {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.brand { display: flex; align-items: center; gap: 14px; }
+.logo {
+  background: rgba(255,255,255,.18);
+  width: 54px; height: 54px;
+  display: grid; place-items: center;
+  border-radius: 17px; font-size: 29px;
+}
+.brand h1 { font-size: 23px; margin: 0 0 7px; }
+.brand p { margin: 0; font-size: 12px; opacity: .85; letter-spacing: 1.2px; }
+.clock { text-align: right; font-size: 13px; line-height: 1.8; }
+.wrap { max-width: 1200px; margin: auto; padding: 22px 18px 45px; }
+.stats {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 14px; margin-bottom: 22px;
+}
+.stat {
+  background: white; border: 1px solid var(--border);
+  border-radius: 15px; padding: 18px;
+  box-shadow: var(--shadow);
+}
+.stat-icon { font-size: 23px; }
+.stat-num { font-size: 28px; font-weight: 800; margin: 9px 0 4px; }
+.stat-label { color: var(--muted); font-size: 13px; }
+.nav {
+  display: flex; gap: 7px; flex-wrap: wrap;
+  background: white; border: 1px solid var(--border);
+  border-radius: 15px; padding: 8px; margin-bottom: 25px;
+}
+.nav button {
+  border: 0; background: transparent; padding: 12px 14px;
+  border-radius: 10px; color: #53675d; font-weight: 650;
+}
+.nav button:hover { background: var(--pale); }
+.nav button.active { background: var(--green); color: white; }
+.section { display: none; }
+.section.active { display: block; }
+.page-head {
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 12px;
+  flex-wrap: wrap; margin-bottom: 20px;
+}
+.page-head h2 { margin: 0 0 7px; font-size: 25px; }
+.page-head p { margin: 0; color: var(--muted); font-size: 14px; }
+.btn {
+  border: 0; background: var(--green); color: white;
+  padding: 11px 15px; border-radius: 10px;
+  font-weight: 700; display: inline-flex;
+  align-items: center; justify-content: center; gap: 7px;
+}
+.btn:hover { background: #056446; }
+.btn.light { background: var(--pale); color: var(--green); }
+.btn.light:hover { background: #d3f0e2; }
+.btn.danger { background: #fff0f0; color: var(--red); }
+.btn.small { padding: 8px 10px; font-size: 12px; }
+.grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+.card {
+  background: white; border: 1px solid var(--border);
+  border-radius: 16px; padding: 20px;
+  box-shadow: var(--shadow); min-width: 0;
+}
+.card h3 { margin: 0 0 7px; font-size: 17px; }
+.sub { color: var(--muted); font-size: 13px; margin: 0 0 17px; }
+.quick { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.quick button {
+  border: 1px solid var(--border); border-radius: 13px;
+  padding: 17px 10px; background: white; color: var(--text);
+  text-align: left;
+}
+.quick button:hover { border-color: var(--green2); background: var(--pale); }
+.quick .emoji { display: block; font-size: 25px; margin-bottom: 12px; }
+.quick strong { display: block; font-size: 13px; margin-bottom: 5px; }
+.quick small { color: var(--muted); font-size: 11px; }
+.tools {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.tools input, .tools select { flex: 1; min-width: 150px; }
+input, select, textarea {
+  width: 100%; padding: 12px;
+  border: 1px solid #dce6e0; border-radius: 10px;
+  background: white; color: var(--text);
+}
+textarea { min-height: 105px; resize: vertical; }
+.field { margin-bottom: 15px; }
+.field label {
+  display: block; font-size: 13px; font-weight: 700;
+  margin-bottom: 7px;
+}
+.item {
+  border: 1px solid var(--border); padding: 15px;
+  border-radius: 12px; margin-bottom: 11px;
+  overflow-wrap: anywhere;
+}
+.item:last-child { margin-bottom: 0; }
+.item-top {
+  display: flex; justify-content: space-between;
+  gap: 12px; align-items: flex-start;
+}
+.item h4 { margin: 0 0 8px; font-size: 15px; }
+.item p { margin: 0 0 10px; font-size: 13px; line-height: 1.6; white-space: pre-wrap; }
+.meta { font-size: 12px; color: var(--muted); line-height: 1.8; }
+.actions { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 12px; }
+.tag {
+  display: inline-block; border-radius: 20px;
+  padding: 4px 9px; background: var(--pale);
+  color: var(--green); font-size: 11px; font-weight: 700;
+}
+.empty { text-align: center; padding: 35px 12px; color: var(--muted); }
+.empty span { display: block; font-size: 32px; margin-bottom: 12px; }
+.checkline { display: flex; gap: 10px; align-items: flex-start; }
+.checkline input { width: auto; margin-top: 4px; }
+.done { opacity: .65; }
+.done h4 { text-decoration: line-through; }
+footer { text-align: center; color: var(--muted); padding: 27px 10px; font-size: 12px; }
+.modal {
+  display: none; position: fixed; inset: 0;
+  z-index: 100; background: rgba(8,30,20,.55);
+  align-items: center; justify-content: center; padding: 15px;
+}
+.modal.open { display: flex; }
+.dialog {
+  width: min(540px,100%); max-height: 90vh;
+  overflow: auto; background: white;
+  border-radius: 18px; padding: 23px;
+  box-shadow: 0 20px 70px #0002;
+}
+.dialog-head {
+  display: flex; justify-content: space-between;
+  align-items: center; margin-bottom: 20px;
+}
+.dialog-head h3 { margin: 0; }
+.close {
+  background: #f0f4f1; border: 0; border-radius: 9px;
+  width: 36px; height: 36px; font-size: 20px;
+}
+.dialog-buttons { display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap; }
+.notice {
+  background: #fff9e8; color: #7b5b13;
+  padding: 13px; border-radius: 10px;
+  font-size: 12px; line-height: 1.7; margin-top: 15px;
+}
+hr { border: 0; border-top: 1px solid var(--border); margin: 20px 0; }
+.hidden { display: none !important; }
+@media(max-width:750px) {
+  .stats { grid-template-columns: repeat(2,1fr); gap: 10px; }
+  .stat { padding: 14px; }
+  .stat-num { font-size: 24px; }
+  .grid { grid-template-columns: 1fr; }
+  .quick { grid-template-columns: 1fr; }
+  .quick button { display: flex; align-items: center; gap: 12px; }
+  .quick .emoji { margin: 0; }
+  .quick small { display: block; }
+  .top-inner { align-items: flex-start; }
+  .clock { display: none; }
+  .brand h1 { font-size: 19px; }
+  .nav { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .nav button { text-align: left; font-size: 12px; padding: 11px 9px; }
+  .wrap { padding: 15px 12px 30px; }
+  .card { padding: 15px; }
+  .page-head h2 { font-size: 22px; }
+}
 </style>
 </head>
+
 <body>
-<div class="app">
-<header class="hero">
-  <div class="brand"><div class="logo">⚡</div><div><h1>BSEE 1B CLASS HUB</h1><p>LEARN TOGETHER · SHARE KNOWLEDGE</p></div></div>
-  <div class="hero-bottom"><div><h2>Your class, all in one place.</h2><p>Share learning materials, stay updated with announcements, and never miss a deadline.</p></div><div class="date-pill" id="todayPill">📅 Loading date…</div></div>
-</header>
-<div class="stats">
-  <div class="stat"><div class="icon">📚</div><strong id="statMaterials">0</strong><span>Shared materials</span></div>
-  <div class="stat"><div class="icon">📢</div><strong id="statAnnouncements">0</strong><span>Announcements</span></div>
-  <div class="stat"><div class="icon">🗓️</div><strong id="statEvents">0</strong><span>Upcoming schedules</span></div>
-  <div class="stat"><div class="icon">🔔</div><strong id="statTasks">0</strong><span>Pending reminders</span></div>
-</div>
-<div class="layout">
-<aside class="sidebar">
-  <button class="navbtn active" data-section="dashboard">🏠 Dashboard</button>
-  <button class="navbtn" data-section="materials">📚 Materials</button>
-  <button class="navbtn" data-section="announcements">📢 Announcements</button>
-  <button class="navbtn" data-section="schedules">🗓️ Schedules</button>
-  <button class="navbtn" data-section="reminders">🔔 Reminders</button>
-  <button class="navbtn" data-section="settings">⚙️ Settings & Backup</button>
-  <div class="side-note">BSEE 1B Class Hub<br>Keep sharing, keep learning. 💚</div>
-</aside>
-<main class="main">
-<section class="section active" id="dashboard">
-  <div class="section-head"><div><h2>Class dashboard 👋</h2><p>Here’s what’s happening with your class.</p></div></div>
-  <div class="panel"><h3 style="margin:0 0 14px">Quick actions</h3><div class="quick-grid">
-    <button class="quick" onclick="openMaterialModal()"><span>📤</span><b>Upload material</b><small>Share notes and files</small></button>
-    <button class="quick" onclick="openAnnouncementModal()"><span>📢</span><b>Post announcement</b><small>Share class updates</small></button>
-    <button class="quick" onclick="openEventModal()"><span>🗓️</span><b>Add schedule</b><small>Plan class activities</small></button>
-  </div></div>
-  <div class="two-col">
-    <div class="panel"><div class="section-head"><div><h2 style="font-size:18px">📢 Latest announcements</h2><p>Stay informed</p></div><button class="btn light small" onclick="showSection('announcements')">View all</button></div><div id="dashboardAnnouncements" class="schedule-list"></div></div>
-    <div class="panel"><div class="section-head"><div><h2 style="font-size:18px">⏰ Coming up</h2><p>Upcoming events and deadlines</p></div><button class="btn light small" onclick="showSection('schedules')">View all</button></div><div id="dashboardEvents" class="schedule-list"></div></div>
+<header class="topbar">
+  <div class="top-inner">
+    <div class="brand">
+      <div class="logo">⚡</div>
+      <div>
+        <h1>BSEE 1B CLASS HUB</h1>
+        <p>LEARN TOGETHER · SHARE KNOWLEDGE</p>
+      </div>
+    </div>
+    <div class="clock">
+      <div id="today"></div>
+      <div id="now"></div>
+    </div>
   </div>
-  <div class="panel"><div class="section-head"><div><h2 style="font-size:18px">📚 Recently shared materials</h2><p>Files shared by classmates</p></div><button class="btn light small" onclick="showSection('materials')">View all</button></div><div id="dashboardMaterials" class="cards"></div></div>
-</section>
-<section class="section" id="materials">
-  <div class="section-head"><div><h2>📚 Learning materials</h2><p>Upload, find, and download class resources.</p></div><button class="btn teal" onclick="openMaterialModal()">＋ Upload material</button></div>
-  <div class="panel"><div class="toolbar"><input id="materialSearch" class="field" placeholder="🔍 Search title, subject, topic…"><select id="materialCategory" class="field" style="max-width:210px"><option value="">All categories</option><option>Lecture Notes</option><option>Reviewers</option><option>Problem Sets</option><option>Presentations</option><option>Modules</option><option>Other</option></select></div><div id="materialsList" class="cards"></div></div>
-</section>
-<section class="section" id="announcements">
-  <div class="section-head"><div><h2>📢 Announcement board</h2><p>Class updates, notices, and important information.</p></div><button class="btn teal" onclick="openAnnouncementModal()">＋ New announcement</button></div>
-  <div class="toolbar"><input id="announcementSearch" class="field" placeholder="🔍 Search announcements…"></div><div id="announcementsList" class="schedule-list"></div>
-</section>
-<section class="section" id="schedules">
-  <div class="section-head"><div><h2>🗓️ Class schedules</h2><p>Exams, quizzes, meetings, activities, and deadlines.</p></div><button class="btn teal" onclick="openEventModal()">＋ Add schedule</button></div>
-  <div class="toolbar"><input id="eventSearch" class="field" placeholder="🔍 Search schedules…"><select id="eventTypeFilter" class="field" style="max-width:200px"><option value="">All event types</option><option>Class</option><option>Quiz / Exam</option><option>Assignment</option><option>Project</option><option>Meeting</option><option>Activity</option><option>Other</option></select></div>
-  <div id="eventsList" class="schedule-list"></div>
-</section>
-<section class="section" id="reminders">
-  <div class="section-head"><div><h2>🔔 Reminders & deadlines</h2><p>Keep track of tasks and mark them complete.</p></div><button class="btn teal" onclick="openReminderModal()">＋ Add reminder</button></div>
-  <div class="hint">Browser notifications are optional and require permission. This page can show reminders while you open it; reliable alerts when the site is closed need an online notification service.</div>
-  <div class="toolbar"><select id="reminderFilter" class="field" style="max-width:220px"><option value="pending">Pending reminders</option><option value="all">All reminders</option><option value="done">Completed</option></select><button class="btn light" onclick="enableNotifications()">🔔 Enable browser notifications</button></div><div id="remindersList" class="schedule-list"></div>
-</section>
-<section class="section" id="settings">
-  <div class="section-head"><div><h2>⚙️ Settings & backup</h2><p>Manage your local class hub data.</p></div></div>
-  <div class="panel"><h3>👤 Display name</h3><p class="meta">This name is used as the default uploader/poster name on this device.</p><div class="toolbar"><input id="displayName" class="field" placeholder="Enter your name"><button class="btn" onclick="saveName()">Save name</button></div></div>
-  <div class="panel"><h3>💾 Backup your data</h3><p class="meta">Export announcements, schedules, reminders, and material metadata as a JSON backup. Uploaded files stored in this browser are included as data URLs and can make the backup large.</p><div class="actions"><button class="btn teal" onclick="exportData()">⬇ Export backup</button><label class="btn light" for="importFile">⬆ Import backup</label><input class="hidden" id="importFile" type="file" accept=".json,application/json"></div></div>
-  <div class="panel"><h3>🌐 About sharing</h3><p class="desc">This starter website stores data in this browser using local storage. Other classmates using a different phone or browser will not automatically see uploads or changes. For a genuinely shared class hub, connect a cloud database and file storage, then publish the site.</p><p class="meta">Tip: Keep a backup regularly, and share only learning materials you have permission to distribute.</p></div>
-  <div class="panel"><h3>🧹 Clear local data</h3><p class="meta">This removes this browser’s stored class hub data. Export a backup first if you want to keep it.</p><button class="btn danger" onclick="clearAllData()">Clear all local data</button></div>
-</section>
+</header>
+
+<main class="wrap">
+  <div class="stats">
+    <div class="stat"><div class="stat-icon">📚</div><div class="stat-num" id="matCount">0</div><div class="stat-label">Shared materials</div></div>
+    <div class="stat"><div class="stat-icon">📢</div><div class="stat-num" id="annCount">0</div><div class="stat-label">Announcements</div></div>
+    <div class="stat"><div class="stat-icon">🗓️</div><div class="stat-num" id="schCount">0</div><div class="stat-label">Upcoming schedules</div></div>
+    <div class="stat"><div class="stat-icon">🔔</div><div class="stat-num" id="remCount">0</div><div class="stat-label">Pending reminders</div></div>
+  </div>
+
+  <nav class="nav" aria-label="Main navigation">
+    <button class="active" data-page="dashboard">🏠 Dashboard</button>
+    <button data-page="materials">📚 Materials</button>
+    <button data-page="announcements">📢 Announcements</button>
+    <button data-page="schedules">🗓️ Schedules</button>
+    <button data-page="reminders">🔔 Reminders</button>
+    <button data-page="settings">⚙️ Settings & Backup</button>
+  </nav>
+
+  <section class="section active" id="dashboard">
+    <div class="page-head">
+      <div><h2>Class dashboard 👋</h2><p>Here's what's happening with your class.</p></div>
+    </div>
+
+    <div class="card" style="margin-bottom:18px">
+      <h3>⚡ Quick actions</h3>
+      <p class="sub">Everything your class needs in one place.</p>
+      <div class="quick">
+        <button data-action="add-material"><span class="emoji">📤</span><span><strong>Upload material</strong><small>Share notes and files</small></span></button>
+        <button data-action="add-announcement"><span class="emoji">📢</span><span><strong>Post announcement</strong><small>Share class updates</small></span></button>
+        <button data-action="add-schedule"><span class="emoji">🗓️</span><span><strong>Add schedule</strong><small>Plan class activities</small></span></button>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card"><h3>📢 Latest announcements</h3><p class="sub">Stay informed</p><div id="dashAnnouncements"></div><button class="btn light" data-page="announcements">View all →</button></div>
+      <div class="card"><h3>⏰ Coming up</h3><p class="sub">Upcoming events and deadlines</p><div id="dashSchedules"></div><button class="btn light" data-page="schedules">View all →</button></div>
+      <div class="card"><h3>📚 Recently shared materials</h3><p class="sub">Files shared by classmates</p><div id="dashMaterials"></div><button class="btn light" data-page="materials">View all →</button></div>
+      <div class="card"><h3>🔔 Pending reminders</h3><p class="sub">Tasks to remember</p><div id="dashReminders"></div><button class="btn light" data-page="reminders">View all →</button></div>
+    </div>
+  </section>
+
+  <section class="section" id="materials">
+    <div class="page-head">
+      <div><h2>📚 Learning materials</h2><p>Upload, find, and download class resources.</p></div>
+      <button class="btn" data-action="add-material">＋ Upload material</button>
+    </div>
+    <div class="card">
+      <div class="tools">
+        <input id="materialSearch" placeholder="🔍 Search title, subject, topic…">
+        <select id="materialFilter"><option value="">All subjects</option></select>
+      </div>
+      <div id="materialsList"></div>
+    </div>
+  </section>
+
+  <section class="section" id="announcements">
+    <div class="page-head">
+      <div><h2>📢 Announcement board</h2><p>Class updates, notices, and important information.</p></div>
+      <button class="btn" data-action="add-announcement">＋ New announcement</button>
+    </div>
+    <div class="card">
+      <div class="tools"><input id="announcementSearch" placeholder="🔍 Search announcements…"></div>
+      <div id="announcementsList"></div>
+    </div>
+  </section>
+
+  <section class="section" id="schedules">
+    <div class="page-head">
+      <div><h2>🗓️ Class schedules</h2><p>Exams, quizzes, meetings, activities, and deadlines.</p></div>
+      <button class="btn" data-action="add-schedule">＋ Add schedule</button>
+    </div>
+    <div class="card">
+      <div class="tools">
+        <input id="scheduleSearch" placeholder="🔍 Search schedules…">
+        <select id="scheduleFilter"><option value="">All types</option><option>Exam</option><option>Quiz</option><option>Class</option><option>Meeting</option><option>Activity</option><option>Deadline</option><option>Other</option></select>
+      </div>
+      <div id="schedulesList"></div>
+    </div>
+  </section>
+
+  <section class="section" id="reminders">
+    <div class="page-head">
+      <div><h2>🔔 Reminders & deadlines</h2><p>Keep track of tasks and mark them complete.</p></div>
+      <button class="btn" data-action="add-reminder">＋ Add reminder</button>
+    </div>
+    <div class="card">
+      <div class="tools">
+        <select id="reminderFilter"><option value="pending">Pending reminders</option><option value="all">All reminders</option><option value="done">Completed</option></select>
+      </div>
+      <div id="remindersList"></div>
+      <div class="notice">Browser notifications are optional. Alerts depend on browser permissions and whether this page is open. Reliable notifications when the site is closed require an online notification service.</div>
+      <button class="btn light" id="enableNotifications" style="margin-top:15px">🔔 Enable browser notifications</button>
+    </div>
+  </section>
+
+  <section class="section" id="settings">
+    <div class="page-head"><div><h2>⚙️ Settings & backup</h2><p>Manage your class hub data.</p></div></div>
+    <div class="grid">
+      <div class="card">
+        <h3>👤 Display name</h3><p class="sub">Default uploader and poster name on this device.</p>
+        <form id="nameForm"><div class="field"><label for="displayName">Your name</label><input id="displayName" placeholder="Enter your name" maxlength="80"></div><button class="btn" type="submit">Save name</button></form>
+      </div>
+      <div class="card">
+        <h3>💾 Backup your data</h3><p class="sub">Export your class hub data to a JSON file or restore a previous backup.</p>
+        <button class="btn" id="exportBackup">⬇ Export backup</button>
+        <hr>
+        <label class="btn light" for="importFile">⬆ Import backup</label>
+        <input class="hidden" type="file" id="importFile" accept=".json,application/json">
+      </div>
+      <div class="card">
+        <h3>🌐 About sharing</h3>
+        <p style="font-size:13px;line-height:1.8">This website saves data in this browser using local storage. Other classmates using different phones or browsers will not automatically see your uploads or changes.</p>
+        <p style="font-size:13px;line-height:1.8">For genuinely shared data, connect a cloud database and file storage service.</p>
+      </div>
+      <div class="card">
+        <h3>🧹 Clear local data</h3><p class="sub">Delete saved information from this browser.</p>
+        <button class="btn danger" id="clearData">Clear all local data</button>
+        <p class="meta">Export a backup first if you want to keep your records.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>Made for BSEE 1B · Learn together, succeed together ⚡</footer>
 </main>
-</div>
-<div class="footer">Made for BSEE 1B · Learn together, succeed together ⚡</div>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="dialog">
+    <div class="dialog-head"><h3 id="modalTitle">Add item</h3><button class="close" type="button" id="closeModal" aria-label="Close">×</button></div>
+    <form id="itemForm">
+      <div id="formFields"></div>
+      <div class="dialog-buttons">
+        <button class="btn light" type="button" id="cancelModal">Cancel</button>
+        <button class="btn" type="submit">Save</button>
+      </div>
+    </form>
+  </div>
 </div>
 
-<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-<div class="modal"><div class="modal-head"><h2 id="modalTitle">Add item</h2><button class="close" onclick="closeModal()" aria-label="Close">×</button></div><form id="modalForm"><div id="modalBody"></div><div class="actions" style="justify-content:flex-end"><button type="button" class="btn light" onclick="closeModal()">Cancel</button><button type="submit" class="btn teal">Save</button></div></form></div>
-</div>
-<div class="toast" id="toast"></div>
+<input type="file" id="filePicker" class="hidden">
+
 <script>
-const STORAGE_KEY='bsee1b_class_hub_v1';
-const $=id=>document.getElementById(id);
-let data={materials:[],announcements:[],events:[],reminders:[],displayName:''};
-let currentForm=null,toastTimer;
-function loadData(){try{const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');data={...data,...saved};['materials','announcements','events','reminders'].forEach(k=>{if(!Array.isArray(data[k]))data[k]=[]});}catch(e){console.warn(e)}$('displayName').value=data.displayName||''}
-function saveData(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(data));renderAll()}catch(e){notify('Storage is full. Try removing large files or exporting a backup.');console.error(e)}}
-function esc(v=''){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function dateLabel(v,opts={month:'short',day:'numeric',year:'numeric'}){if(!v)return 'Date not set';const d=new Date(v+'T00:00:00');return isNaN(d)?v:d.toLocaleDateString(undefined,opts)}
-function dateTimeLabel(date,time){return dateLabel(date,{month:'short',day:'numeric',year:'numeric'})+(time?' · '+esc(time):'')}
-function todayISO(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
-function sortByDate(items,key='date'){return [...items].sort((a,b)=>(a[key]||'9999').localeCompare(b[key]||'9999'))}
-function notify(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2800)}
-function showSection(id){document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.section===id));window.scrollTo({top:0,behavior:'smooth'});renderAll()}
-document.querySelectorAll('.navbtn').forEach(b=>b.addEventListener('click',()=>showSection(b.dataset.section)));
-function emptyState(icon,title,desc){return `<div class="empty"><div class="big">${icon}</div><h3>${esc(title)}</h3><p>${esc(desc)}</p></div>`}
-function fileEmoji(name=''){const ext=(name.split('.').pop()||'').toLowerCase();return ({pdf:'📕',doc:'📘',docx:'📘',ppt:'📙',pptx:'📙',xls:'📗',xlsx:'📗',png:'🖼️',jpg:'🖼️',jpeg:'🖼️',gif:'🖼️',txt:'📄',zip:'🗜️'})[ext]||'📄'}
-function materialCard(m){return `<article class="material"><div class="material-top"><div class="fileicon">${fileEmoji(m.fileName||m.title)}</div><div style="min-width:0;flex:1"><h3>${esc(m.title)}</h3><div class="meta">${esc(m.subject||'General')} · ${esc(m.category||'Other')}</div><div class="meta">By ${esc(m.uploader||'Classmate')} · ${dateLabel(m.createdAt||todayISO())}</div></div></div>${m.description?`<p class="desc">${esc(m.description)}</p>`:''}<div class="meta">${esc(m.fileName||'No attached file')}${m.dataUrl?' · '+(m.fileSize||'Attached'):''}</div><div class="actions">${m.dataUrl?`<button class="btn teal small" onclick="downloadMaterial('${m.id}')">⬇ Download</button>`:''}<button class="btn light small" onclick="editMaterial('${m.id}')">✏️ Edit</button><button class="btn danger small" onclick="deleteItem('materials','${m.id}')">Delete</button></div></article>`}
-function announcementCard(a){return `<article class="notice ${a.pinned?'pinned':''}"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><span class="tag ${a.priority==='Urgent'?'urgent':a.priority==='Important'?'important':''}">${a.pinned?'📌 Pinned · ':''}${esc(a.priority||'General')}</span><span class="meta">${dateLabel(a.createdAt||todayISO())}</span></div><h3 style="margin-top:10px">${esc(a.title)}</h3><div class="meta">Posted by ${esc(a.poster||'Class officer')}${a.subject?' · '+esc(a.subject):''}</div><p class="desc">${esc(a.body)}</p><div class="actions"><button class="btn light small" onclick="editAnnouncement('${a.id}')">✏️ Edit</button><button class="btn danger small" onclick="deleteItem('announcements','${a.id}')">Delete</button></div></article>`}
-function eventCard(e){const d=e.date?new Date(e.date+'T00:00:00'):null;const day=d&&!isNaN(d)?d.getDate():'—';const mon=d&&!isNaN(d)?d.toLocaleDateString(undefined,{month:'short'}):'TBD';return `<article class="event"><div class="event-date"><b>${day}</b><span>${mon}</span></div><div class="event-content"><span class="tag ${/quiz|exam/i.test(e.type)?'exam':''}">${esc(e.type||'Event')}</span><h3 style="margin-top:7px">${esc(e.title)}</h3><div class="meta">📅 ${dateTimeLabel(e.date,e.time)}${e.location?' · 📍 '+esc(e.location):''}</div>${e.subject?`<div class="meta">Subject: ${esc(e.subject)}</div>`:''}${e.description?`<p class="desc">${esc(e.description)}</p>`:''}<div class="meta">Added by ${esc(e.poster||'Class officer')}</div><div class="actions"><button class="btn light small" onclick="editEvent('${e.id}')">✏️ Edit</button><button class="btn danger small" onclick="deleteItem('events','${e.id}')">Delete</button></div></div></article>`}
-function reminderCard(r){return `<article class="task ${r.done?'done':''}"><input type="checkbox" aria-label="Mark reminder complete" ${r.done?'checked':''} onchange="toggleReminder('${r.id}',this.checked)"><div style="flex:1;min-width:0"><h3>${esc(r.title)}</h3><div class="meta">📅 ${dateTimeLabel(r.date,r.time)}${r.subject?' · '+esc(r.subject):''}</div>${r.description?`<p class="desc">${esc(r.description)}</p>`:''}<div class="meta">Added by ${esc(r.poster||'Classmate')}</div><div class="actions"><button class="btn light small" onclick="editReminder('${r.id}')">✏️ Edit</button><button class="btn danger small" onclick="deleteItem('reminders','${r.id}')">Delete</button></div></div></article>`}
-function renderAll(){const now=todayISO();$('todayPill').textContent='📅 '+new Date().toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric'});$('statMaterials').textContent=data.materials.length;$('statAnnouncements').textContent=data.announcements.length;$('statEvents').textContent=data.events.filter(e=>!e.date||e.date>=now).length;$('statTasks').textContent=data.reminders.filter(r=>!r.done).length;
-const mSearch=($('materialSearch')?.value||'').toLowerCase(),cat=$('materialCategory')?.value||'';const mats=[...data.materials].sort((a,b)=>(b.createdAt||'').localeCompare(a.createdAt||'')).filter(m=>(!cat||m.category===cat)&&[m.title,m.subject,m.description,m.uploader,m.category].join(' ').toLowerCase().includes(mSearch));$('materialsList').innerHTML=mats.map(materialCard).join('')||emptyState('📚','No materials found','Upload the first learning material for BSEE 1B.');
-const aSearch=($('announcementSearch')?.value||'').toLowerCase();const anns=[...data.announcements].sort((a,b)=>(Number(b.pinned)-Number(a.pinned))||(b.createdAt||'').localeCompare(a.createdAt||'')).filter(a=>[a.title,a.body,a.subject,a.poster].join(' ').toLowerCase().includes(aSearch));$('announcementsList').innerHTML=anns.map(announcementCard).join('')||emptyState('📢','No announcements yet','New class announcements will appear here.');
-const eSearch=($('eventSearch')?.value||'').toLowerCase(),type=$('eventTypeFilter')?.value||'';const events=sortByDate(data.events).filter(e=>(!type||e.type===type)&&[e.title,e.subject,e.description,e.location,e.type].join(' ').toLowerCase().includes(eSearch));$('eventsList').innerHTML=events.map(eventCard).join('')||emptyState('🗓️','No schedules found','Add an exam, class activity, or assignment deadline.');
-const rf=$('reminderFilter')?.value||'pending';const rems=sortByDate(data.reminders).filter(r=>rf==='all'||(rf==='done'?r.done:!r.done));$('remindersList').innerHTML=rems.map(reminderCard).join('')||emptyState('🔔','You’re all caught up!','No reminders in this list.');
-$('dashboardAnnouncements').innerHTML=[...data.announcements].sort((a,b)=>(Number(b.pinned)-Number(a.pinned))||(b.createdAt||'').localeCompare(a.createdAt||'')).slice(0,3).map(a=>`<div class="notice ${a.pinned?'pinned':''}"><span class="tag">${a.pinned?'📌 Pinned':esc(a.priority||'General')}</span><h3 style="margin-top:8px">${esc(a.title)}</h3><div class="meta">${dateLabel(a.createdAt||now)} · ${esc(a.poster||'Class officer')}</div><p class="desc">${esc(a.body)}</p></div>`).join('')||emptyState('📢','Nothing posted yet','Announcements will show up here.');
-$('dashboardEvents').innerHTML=sortByDate(data.events).filter(e=>!e.date||e.date>=now).slice(0,3).map(e=>`<div class="event"><div class="event-date"><b>${e.date?new Date(e.date+'T00:00:00').getDate():'—'}</b><span>${e.date?new Date(e.date+'T00:00:00').toLocaleDateString(undefined,{month:'short'}):'TBD'}</span></div><div class="event-content"><h3>${esc(e.title)}</h3><div class="meta">${esc(e.type||'Event')} · ${dateTimeLabel(e.date,e.time)}</div></div></div>`).join('')||emptyState('🗓️','No upcoming events','Add your next class schedule.');
-$('dashboardMaterials').innerHTML=[...data.materials].sort((a,b)=>(b.createdAt||'').localeCompare(a.createdAt||'')).slice(0,2).map(materialCard).join('')||emptyState('📚','No materials yet','Upload notes or reviewers to get started.');
+"use strict";
+
+const KEY = "bsee1b_classhub_v1";
+const $ = id => document.getElementById(id);
+const todayISO = () => {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+};
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,8);
+
+let state = {
+  name: "",
+  materials: [],
+  announcements: [],
+  schedules: [],
+  reminders: []
+};
+let editing = null;
+let pendingFile = null;
+
+function load() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY) || "null");
+    if (saved && typeof saved === "object") {
+      state = {
+        name: typeof saved.name === "string" ? saved.name : "",
+        materials: Array.isArray(saved.materials) ? saved.materials : [],
+        announcements: Array.isArray(saved.announcements) ? saved.announcements : [],
+        schedules: Array.isArray(saved.schedules) ? saved.schedules : [],
+        reminders: Array.isArray(saved.reminders) ? saved.reminders : []
+      };
+    }
+  } catch (e) {
+    console.error("Could not read saved data", e);
+  }
 }
-['materialSearch','materialCategory','announcementSearch','eventSearch','eventTypeFilter','reminderFilter'].forEach(id=>$(id).addEventListener('input',renderAll));
-function openModal(title,body,handler){currentForm=handler;$('modalTitle').textContent=title;$('modalBody').innerHTML=body;$('modalBackdrop').classList.add('open')}
-function closeModal(){$('modalBackdrop').classList.remove('open');$('modalForm').reset();currentForm=null}
-$('modalBackdrop').addEventListener('click',e=>{if(e.target===$('modalBackdrop'))closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-$('modalForm').addEventListener('submit',async e=>{e.preventDefault();if(currentForm)await currentForm(new FormData(e.target));});
-const input=(label,name,placeholder='',value='',type='text',required=false)=>`<div class="formrow"><label for="${name}">${label}${required?' *':''}</label><input class="field" id="${name}" name="${name}" type="${type}" placeholder="${placeholder}" value="${esc(value||'')}" ${required?'required':''}></div>`;
-const select=(label,name,options,value='')=>`<div class="formrow"><label for="${name}">${label}</label><select class="field" id="${name}" name="${name}">${options.map(o=>`<option ${o===value?'selected':''}>${esc(o)}</option>`).join('')}</select></div>`;
-const area=(label,name,placeholder='',value='')=>`<div class="formrow full"><label for="${name}">${label}</label><textarea class="field" id="${name}" name="${name}" rows="3" placeholder="${placeholder}">${esc(value||'')}</textarea></div>`;
-const byline=()=>data.displayName||'Classmate';
-function openMaterialModal(existing=null){const m=existing||{};openModal(existing?'Edit material':'Upload learning material',`<div class="formgrid">${input('Material title','title','e.g. Circuit Analysis Reviewer',m.title,'text',true)}${input('Subject / topic','subject','e.g. Mathematics',m.subject)}${select('Category','category',['Lecture Notes','Reviewers','Problem Sets','Presentations','Modules','Other'],m.category||'Lecture Notes')}${input('Uploader name','uploader','Your name',m.uploader||byline())}${area('Description','description','What is this material about?',m.description)}<div class="formrow full"><label for="materialFile">Choose a file (PDF, DOCX, PPTX, image, etc.)</label><input class="field" id="materialFile" name="file" type="file" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt,.csv,.jpg,.jpeg,.png,.gif,.webp,.zip,.odt,.ods,.odp"></div></div><div class="hint">Files are stored inside this browser. Large files may exceed browser storage limits. Choose a file up to about 5 MB for best results.</div>`,async fd=>{const file=fd.get('file');let dataUrl=m.dataUrl||'',fileName=m.fileName||'',fileSize=m.fileSize||'';if(file&&file.size){if(file.size>5*1024*1024){notify('Please choose a file smaller than 5 MB.');return}dataUrl=await new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(file)});fileName=file.name;fileSize=(file.size/1024).toFixed(0)+' KB'}const item={...m,id:m.id||crypto.randomUUID(),title:fd.get('title').trim(),subject:fd.get('subject').trim(),category:fd.get('category'),uploader:fd.get('uploader').trim()||byline(),description:fd.get('description').trim(),fileName,fileSize,dataUrl,createdAt:m.createdAt||todayISO()};if(!item.title){notify('Please enter a title.');return}if(m.id)data.materials=data.materials.map(x=>x.id===m.id?item:x);else data.materials.unshift(item);saveData();closeModal();notify('Material saved!')})}
-function editMaterial(id){const m=data.materials.find(x=>x.id===id);if(m)openMaterialModal(m)}
-function downloadMaterial(id){const m=data.materials.find(x=>x.id===id);if(!m||!m.dataUrl)return;const a=document.createElement('a');a.href=m.dataUrl;a.download=m.fileName||m.title;a.click()}
-function openAnnouncementModal(existing=null){const a=existing||{};openModal(existing?'Edit announcement':'New announcement',`<div class="formgrid">${input('Announcement title','title','e.g. Schedule change',a.title,'text',true)}${select('Priority','priority',['General','Important','Urgent'],a.priority||'General')}${input('Subject (optional)','subject','e.g. Physics',a.subject)}${input('Posted by','poster','Your name',a.poster||byline())}${area('Announcement details','body','Write the announcement clearly…',a.body)}<div class="formrow full"><label><input type="checkbox" name="pinned" ${a.pinned?'checked':''}> 📌 Pin this announcement to the top</label></div></div>`,fd=>{const item={...a,id:a.id||crypto.randomUUID(),title:fd.get('title').trim(),priority:fd.get('priority'),subject:fd.get('subject').trim(),poster:fd.get('poster').trim()||byline(),body:fd.get('body').trim(),pinned:fd.get('pinned')==='on',createdAt:a.createdAt||todayISO()};if(!item.title||!item.body){notify('Please enter a title and announcement details.');return}if(a.id)data.announcements=data.announcements.map(x=>x.id===a.id?item:x);else data.announcements.unshift(item);saveData();closeModal();notify('Announcement saved!')})}
-function editAnnouncement(id){const a=data.announcements.find(x=>x.id===id);if(a)openAnnouncementModal(a)}
-function openEventModal(existing=null){const e=existing||{};openModal(existing?'Edit schedule':'Add class schedule',`<div class="formgrid">${input('Event title','title','e.g. Midterm examination',e.title,'text',true)}${select('Event type','type',['Class','Quiz / Exam','Assignment','Project','Meeting','Activity','Other'],e.type||'Class')}${input('Date','date','',e.date,'date',true)}${input('Time','time','e.g. 1:00 PM',e.time)}${input('Subject','subject','e.g. Electrical Circuits',e.subject)}${input('Location / room','location','e.g. Room 204',e.location)}${input('Added by','poster','Your name',e.poster||byline())}${area('Details','description','Bring materials, coverage, instructions…',e.description)}</div>`,fd=>{const item={...e,id:e.id||crypto.randomUUID(),title:fd.get('title').trim(),type:fd.get('type'),date:fd.get('date'),time:fd.get('time').trim(),subject:fd.get('subject').trim(),location:fd.get('location').trim(),poster:fd.get('poster').trim()||byline(),description:fd.get('description').trim()};if(!item.title||!item.date){notify('Please enter an event title and date.');return}if(e.id)data.events=data.events.map(x=>x.id===e.id?item:x);else data.events.push(item);saveData();closeModal();notify('Schedule saved!')})}
-function editEvent(id){const e=data.events.find(x=>x.id===id);if(e)openEventModal(e)}
-function openReminderModal(existing=null){const r=existing||{};openModal(existing?'Edit reminder':'Add reminder',`<div class="formgrid">${input('Reminder title','title','e.g. Submit lab report',r.title,'text',true)}${input('Due date','date','',r.date||todayISO(),'date',true)}${input('Time (optional)','time','e.g. 11:59 PM',r.time)}${input('Subject','subject','e.g. Engineering Math',r.subject)}${input('Added by','poster','Your name',r.poster||byline())}${area('Notes','description','Any details to remember…',r.description)}</div>`,fd=>{const item={...r,id:r.id||crypto.randomUUID(),title:fd.get('title').trim(),date:fd.get('date'),time:fd.get('time').trim(),subject:fd.get('subject').trim(),poster:fd.get('poster').trim()||byline(),description:fd.get('description').trim(),done:r.done||false};if(!item.title||!item.date){notify('Please enter a reminder title and due date.');return}if(r.id)data.reminders=data.reminders.map(x=>x.id===r.id?item:x);else data.reminders.push(item);saveData();closeModal();notify('Reminder saved!')})}
-function editReminder(id){const r=data.reminders.find(x=>x.id===id);if(r)openReminderModal(r)}
-function toggleReminder(id,done){data.reminders=data.reminders.map(r=>r.id===id?{...r,done}:r);saveData();notify(done?'Reminder completed!':'Reminder marked pending.')}
-function deleteItem(key,id){if(!confirm('Delete this item? This cannot be undone unless you have a backup.'))return;data[key]=data[key].filter(x=>x.id!==id);saveData();notify('Item deleted.')}
-function saveName(){data.displayName=$('displayName').value.trim();saveData();notify('Display name saved.')}
-function exportData(){const blob=new Blob([JSON.stringify({...data,backupCreatedAt:new Date().toISOString()},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='bsee-1b-class-hub-backup-'+todayISO()+'.json';a.click();URL.revokeObjectURL(a.href);notify('Backup exported.')}
-$('importFile').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const parsed=JSON.parse(await f.text());if(!parsed||!Array.isArray(parsed.materials)||!Array.isArray(parsed.announcements)||!Array.isArray(parsed.events)||!Array.isArray(parsed.reminders))throw new Error('Invalid backup');if(!confirm('Import backup and replace the current data on this browser?'))return;data={...data,...parsed};delete data.backupCreatedAt;saveData();$('displayName').value=data.displayName||'';notify('Backup imported successfully.')}catch(err){notify('Could not import this backup file.')}e.target.value=''});
-function clearAllData(){if(!confirm('Delete ALL BSEE 1B Class Hub data saved in this browser? Export a backup first if needed.'))return;if(!confirm('Are you absolutely sure? This cannot be undone.'))return;localStorage.removeItem(STORAGE_KEY);data={materials:[],announcements:[],events:[],reminders:[],displayName:''};$('displayName').value='';saveData();notify('Local data cleared.')}
-async function enableNotifications(){if(!('Notification'in window)){notify('This browser does not support notifications.');return}try{const p=await Notification.requestPermission();notify(p==='granted'?'Browser notifications enabled. Keep this page open to check reminders.':'Notification permission was not granted.')}catch(e){notify('Could not enable notifications.')}}
-function checkDueReminders(){if(!('Notification'in window)||Notification.permission!=='granted')return;const now=new Date();data.reminders.filter(r=>!r.done&&r.date===todayISO()).forEach(r=>{const key='bsee1b-notified-'+r.id+'-'+r.date;if(sessionStorage.getItem(key))return;new Notification('BSEE 1B Reminder',{body:r.title+(r.time?' · '+r.time:'')});sessionStorage.setItem(key,'1')})}
-loadData();renderAll();checkDueReminders();setInterval(checkDueReminders,60000);
+
+function save() {
+  try {
+    localStorage.setItem(KEY, JSON.stringify(state));
+    return true;
+  } catch (e) {
+    alert("Unable to save. Browser storage may be full. Try removing large uploaded files or exporting your data.");
+    return false;
+  }
+}
+
+function esc(value) {
+  return String(value ?? "").replace(/[&<>"']/g, ch => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+  })[ch]);
+}
+
+function niceDate(value) {
+  if (!value) return "No date set";
+  const d = new Date(value.length === 10 ? value + "T12:00:00" : value);
+  return isNaN(d) ? esc(value) : d.toLocaleString([], {
+    year:"numeric", month:"short", day:"numeric",
+    ...(value.length > 10 ? {hour:"numeric",minute:"2-digit"} : {})
+  });
+}
+
+function updateClock() {
+  const d = new Date();
+  $("today").textContent = d.toLocaleDateString([], {weekday:"long", month:"long", day:"numeric", year:"numeric"});
+  $("now").textContent = d.toLocaleTimeString([], {hour:"numeric", minute:"2-digit", second:"2-digit"});
+}
+updateClock();
+setInterval(updateClock, 1000);
+
+function empty(icon, message) {
+  return `<div class="empty"><span>${icon}</span>${esc(message)}</div>`;
+}
+
+function itemActions(type, item) {
+  return `<div class="actions">
+    <button class="btn light small" data-edit="${type}" data-id="${esc(item.id)}">✏️ Edit</button>
+    <button class="btn danger small" data-delete="${type}" data-id="${esc(item.id)}">🗑 Delete</button>
+  </div>`;
+}
+
+function materialCard(m) {
+  const attachment = m.data
+    ? `<div class="meta">📎 ${esc(m.fileName || "Attached file")} · ${esc(m.fileSize || "")}</div>
+       <div class="actions"><button class="btn light small" data-download="${esc(m.id)}">⬇ Download file</button></div>`
+    : "";
+  return `<article class="item">
+    <div class="item-top"><h4>${esc(m.title)}</h4><span class="tag">${esc(m.subject || "General")}</span></div>
+    <p>${esc(m.description || "No description provided.")}</p>
+    <div class="meta">👤 ${esc(m.author || "Classmate")} · ${niceDate(m.created)}</div>
+    ${attachment}${itemActions("materials",m)}
+  </article>`;
+}
+
+function announcementCard(a) {
+  return `<article class="item">
+    <div class="item-top"><h4>${esc(a.title)}</h4>${a.priority ? `<span class="tag">${esc(a.priority)}</span>` : ""}</div>
+    <p>${esc(a.content)}</p>
+    <div class="meta">👤 ${esc(a.author || "Classmate")} · ${niceDate(a.created)}</div>
+    ${itemActions("announcements",a)}
+  </article>`;
+}
+
+function scheduleCard(s) {
+  return `<article class="item">
+    <div class="item-top"><h4>${esc(s.title)}</h4><span class="tag">${esc(s.type || "Other")}</span></div>
+    <p>${esc(s.description || "")}</p>
+    <div class="meta">📅 ${niceDate(s.date)}${s.location ? " · 📍 " + esc(s.location) : ""}<br>👤 ${esc(s.author || "Classmate")}</div>
+    ${itemActions("schedules",s)}
+  </article>`;
+}
+
+function reminderCard(r) {
+  return `<article class="item ${r.done ? "done" : ""}">
+    <div class="checkline">
+      <input type="checkbox" aria-label="Mark reminder complete" data-toggle-reminder="${esc(r.id)}" ${r.done ? "checked" : ""}>
+      <div style="flex:1;min-width:0">
+        <h4>${esc(r.title)}</h4>
+        <p>${esc(r.description || "")}</p>
+        <div class="meta">📅 ${niceDate(r.date)} · ${r.done ? "Completed" : "Pending"}</div>
+        ${itemActions("reminders",r)}
+      </div>
+    </div>
+  </article>`;
+}
+
+function renderList(id, items, renderer, icon, message) {
+  $(id).innerHTML = items.length ? items.map(renderer).join("") : empty(icon,message);
+}
+
+function render() {
+  $("matCount").textContent = state.materials.length;
+  $("annCount").textContent = state.announcements.length;
+  $("schCount").textContent = state.schedules.filter(s => s.date >= todayISO()).length;
+  $("remCount").textContent = state.reminders.filter(r => !r.done).length;
+
+  renderList("dashAnnouncements", [...state.announcements].reverse().slice(0,3), announcementCard, "📢", "No announcements yet.");
+  renderList("dashSchedules", state.schedules.filter(s=>s.date>=todayISO()).sort((a,b)=>(a.date||"").localeCompare(b.date||"")).slice(0,3), scheduleCard, "🗓️", "No upcoming schedules.");
+  renderList("dashMaterials", [...state.materials].reverse().slice(0,3), materialCard, "📚", "No materials shared yet.");
+  renderList("dashReminders", state.reminders.filter(r=>!r.done).sort((a,b)=>(a.date||"").localeCompare(b.date||"")).slice(0,3), reminderCard, "🔔", "You're all caught up!");
+
+  const subject = $("materialFilter").value;
+  const q = $("materialSearch").value.toLowerCase();
+  const subjects = [...new Set(state.materials.map(m=>m.subject).filter(Boolean))].sort();
+  $("materialFilter").innerHTML = '<option value="">All subjects</option>' + subjects.map(s=>`<option value="${esc(s)}">${esc(s)}</option>`).join("");
+  if (subjects.includes(subject)) $("materialFilter").value = subject;
+
+  renderList("materialsList", [...state.materials].reverse().filter(m =>
+    (!q || [m.title,m.subject,m.description,m.author].some(v=>String(v||"").toLowerCase().includes(q))) &&
+    (!subject || m.subject===subject)
+  ), materialCard, "📚", "No matching materials. Upload the first resource!");
+
+  const aq = $("announcementSearch").value.toLowerCase();
+  renderList("announcementsList", [...state.announcements].reverse().filter(a=>
+    [a.title,a.content,a.author].some(v=>String(v||"").toLowerCase().includes(aq))
+  ), announcementCard, "📢", "No announcements found.");
+
+  const sq = $("scheduleSearch").value.toLowerCase();
+  const sf = $("scheduleFilter").value;
+  renderList("schedulesList", [...state.schedules].sort((a,b)=>(a.date||"").localeCompare(b.date||"")).filter(s=>
+    (!sq || [s.title,s.description,s.location,s.type].some(v=>String(v||"").toLowerCase().includes(sq))) &&
+    (!sf || s.type===sf)
+  ), scheduleCard, "🗓️", "No schedules found.");
+
+  const rf = $("reminderFilter").value;
+  renderList("remindersList", [...state.reminders].sort((a,b)=>Number(a.done)-Number(b.done)||(a.date||"").localeCompare(b.date||"")).filter(r=>
+    rf==="all" || (rf==="done" ? r.done : !r.done)
+  ), reminderCard, "🔔", "No reminders here.");
+
+  $("displayName").value = state.name || "";
+}
+
+function go(page) {
+  if (!$ (page)) return;
+  document.querySelectorAll(".section").forEach(el=>el.classList.toggle("active",el.id===page));
+  document.querySelectorAll("[data-page]").forEach(el=>el.classList.toggle("active",el.dataset.page===page));
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+document.addEventListener("click", e => {
+  const page = e.target.closest("[data-page]");
+  if (page) { go(page.dataset.page); return; }
+
+  const action = e.target.closest("[data-action]");
+  if (action) { openForm(action.dataset.action.replace("add-",""), null); return; }
+
+  const edit = e.target.closest("[data-edit]");
+  if (edit) { openForm(edit.dataset.edit,edit.dataset.id); return; }
+
+  const del = e.target.closest("[data-delete]");
+  if (del) { deleteItem(del.dataset.delete,del.dataset.id); return; }
+
+  const dl = e.target.closest("[data-download]");
+  if (dl) { downloadMaterial(dl.dataset.download); return; }
+});
+
+document.addEventListener("change", e => {
+  const cb = e.target.closest("[data-toggle-reminder]");
+  if (!cb) return;
+  const item = state.reminders.find(r=>r.id===cb.dataset.toggleReminder);
+  if (item) { item.done = cb.checked; save(); render(); }
+});
+
+function deleteItem(type,id) {
+  if (!confirm("Delete this item? This cannot be undone unless you have a backup.")) return;
+  state[type] = state[type].filter(x=>x.id!==id);
+  save(); render();
+}
+
+const fields = {
+  materials: [
+    ["title","Material title","text",true],
+    ["subject","Subject","text",true],
+    ["description","Description / topic","textarea",false],
+    ["file","Attach a file (optional)","file",false]
+  ],
+  announcements: [
+    ["title","Announcement title","text",true],
+    ["priority","Priority","select",false,["Normal","Important","Urgent"]],
+    ["content","Announcement details","textarea",true]
+  ],
+  schedules: [
+    ["title","Activity / event title","text",true],
+    ["type","Event type","select",true,["Class","Exam","Quiz","Meeting","Activity","Deadline","Other"]],
+    ["date","Date and time","datetime-local",true],
+    ["location","Room / location (optional)","text",false],
+    ["description","Details","textarea",false]
+  ],
+  reminders: [
+    ["title","Reminder title","text",true],
+    ["date","Due date","date",true],
+    ["description","Details","textarea",false]
+  ]
+};
+
+function openForm(type,id) {
+  if (!fields[type]) return;
+  editing = id ? {type,id} : {type,id:null};
+  pendingFile = null;
+  const old = id ? state[type].find(x=>x.id===id) : null;
+  if (id && !old) return;
+
+  $("modalTitle").textContent = (id ? "Edit " : "Add ") + ({
+    materials:"learning material",
+    announcements:"announcement",
+    schedules:"schedule",
+    reminders:"reminder"
+  }[type]);
+
+  $("formFields").innerHTML = fields[type].map(([key,label,kind,required,options]) => {
+    const value = old?.[key] ?? (key==="date" && type==="schedules" ? todayISO()+"T09:00" : key==="date" && type==="reminders" ? todayISO() : "");
+    const req = required ? "required" : "";
+    if (kind==="textarea") return `<div class="field"><label for="f_${key}">${esc(label)}</label><textarea id="f_${key}" name="${key}" ${req}>${esc(value)}</textarea></div>`;
+    if (kind==="select") return `<div class="field"><label for="f_${key}">${esc(label)}</label><select id="f_${key}" name="${key}" ${req}>${options.map(o=>`<option ${o===value?"selected":""}>${esc(o)}</option>`).join("")}</select></div>`;
+    if (kind==="file") return `<div class="field"><label for="f_${key}">${esc(label)}</label><input id="f_${key}" name="${key}" type="file"><div class="meta" id="fileStatus">${old?.fileName ? "Current file: "+esc(old.fileName) : "No file selected."}</div>${old?.data ? '<label style="margin-top:8px"><input type="checkbox" id="removeFile" style="width:auto"> Remove existing attachment</label>' : ""}</div>`;
+    return `<div class="field"><label for="f_${key}">${esc(label)}</label><input id="f_${key}" name="${key}" type="${kind}" value="${esc(value)}" ${req}></div>`;
+  }).join("");
+
+  const fileInput = $("f_file");
+  if (fileInput) fileInput.addEventListener("change", async () => {
+    const file = fileInput.files[0];
+    if (!file) return;
+    if (file.size > 2 * 1024 * 1024) {
+      alert("For this browser-only version, please choose a file under 2 MB to help prevent storage issues.");
+      fileInput.value = "";
+      return;
+    }
+    pendingFile = await readFile(file);
+    $("fileStatus").textContent = `${file.name} · ${formatSize(file.size)} · Ready to save`;
+  });
+
+  $("modal").classList.add("open");
+}
+
+function readFile(file) {
+  return new Promise((resolve,reject)=>{
+    const reader = new FileReader();
+    reader.onload = () => resolve({
+      data:reader.result,
+      fileName:file.name,
+      fileSize:formatSize(file.size),
+      mime:file.type || "application/octet-stream"
+    });
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+function formatSize(bytes) {
+  return bytes < 1024 ? bytes+" B" : bytes < 1048576 ? (bytes/1024).toFixed(1)+" KB" : (bytes/1048576).toFixed(1)+" MB";
+}
+
+function closeForm() {
+  $("modal").classList.remove("open");
+  $("itemForm").reset();
+  editing = null;
+  pendingFile = null;
+}
+$("closeModal").addEventListener("click",closeForm);
+$("cancelModal").addEventListener("click",closeForm);
+$("modal").addEventListener("click",e=>{ if(e.target===$("modal")) closeForm(); });
+document.addEventListener("keydown",e=>{if(e.key==="Escape") closeForm();});
+
+$("itemForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  if (!editing) return;
+  const {type,id} = editing;
+  const old = id ? state[type].find(x=>x.id===id) : null;
+  const data = Object.fromEntries(new FormData(e.currentTarget).entries());
+  const item = {
+    ...(old || {}),
+    id:id || uid(),
+    ...data,
+    author:state.name.trim() || "BSEE 1B Classmate",
+    created:old?.created || new Date().toISOString()
+  };
+
+  if (type==="materials") {
+    delete item.file;
+    if (pendingFile) Object.assign(item,pendingFile);
+    if ($("removeFile")?.checked) {
+      delete item.data; delete item.fileName; delete item.fileSize; delete item.mime;
+    }
+  }
+  if (type==="reminders" && !old) item.done = false;
+  if (old) {
+    const i = state[type].findIndex(x=>x.id===id);
+    state[type][i] = item;
+  } else {
+    state[type].push(item);
+  }
+
+  if (save()) {
+    closeForm();
+    render();
+  } else if (!old) {
+    state[type] = state[type].filter(x=>x.id!==item.id);
+  }
+});
+
+function downloadMaterial(id) {
+  const m = state.materials.find(x=>x.id===id);
+  if (!m || !m.data) { alert("No attachment is available."); return; }
+  const a = document.createElement("a");
+  a.href = m.data;
+  a.download = m.fileName || "class-material";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+
+["materialSearch","materialFilter","announcementSearch","scheduleSearch","scheduleFilter","reminderFilter"].forEach(id=>{
+  $(id).addEventListener("input",render);
+  $(id).addEventListener("change",render);
+});
+
+$("nameForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  state.name = $("displayName").value.trim();
+  save(); render();
+  alert("Display name saved!");
+});
+
+$("exportBackup").addEventListener("click",()=>{
+  const blob = new Blob([JSON.stringify(state,null,2)],{type:"application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href=url; a.download="BSEE-1B-Class-Hub-Backup-"+todayISO()+".json";
+  a.click();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
+
+$("importFile").addEventListener("change",async e=>{
+  const file = e.target.files[0];
+  if (!file) return;
+  try {
+    const imported = JSON.parse(await file.text());
+    if (!imported || !Array.isArray(imported.materials) ||
+        !Array.isArray(imported.announcements) ||
+        !Array.isArray(imported.schedules) ||
+        !Array.isArray(imported.reminders)) {
+      throw new Error("This does not look like a valid class hub backup.");
+    }
+    if (!confirm("Import this backup? Your current local data will be replaced.")) return;
+    state = {
+      name:typeof imported.name==="string" ? imported.name : "",
+      materials:imported.materials,
+      announcements:imported.announcements,
+      schedules:imported.schedules,
+      reminders:imported.reminders
+    };
+    if (save()) { render(); alert("Backup imported successfully!"); }
+  } catch(err) {
+    alert("Could not import backup: "+err.message);
+  } finally {
+    e.target.value="";
+  }
+});
+
+$("clearData").addEventListener("click",()=>{
+  if (!confirm("Delete ALL class hub data saved in this browser? Export a backup first if needed.")) return;
+  if (!confirm("Final confirmation: this action cannot be undone.")) return;
+  localStorage.removeItem(KEY);
+  state={name:"",materials:[],announcements:[],schedules:[],reminders:[]};
+  render();
+  go("dashboard");
+});
+
+$("enableNotifications").addEventListener("click",async()=>{
+  if (!("Notification" in window)) {
+    alert("This browser does not support notifications.");
+    return;
+  }
+  const permission = await Notification.requestPermission();
+  if (permission==="granted") {
+    new Notification("BSEE 1B Class Hub",{body:"Browser notifications are enabled while supported by your browser."});
+  } else {
+    alert("Notifications were not enabled. Check your browser's site settings.");
+  }
+});
+
+load();
+render();
 </script>
 </body>
 </html>
